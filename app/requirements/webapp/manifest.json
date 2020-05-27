@@ -1,0 +1,58 @@
+{
+    "sap.app": {
+        "id": "requirements",
+        "title": "Requerimientos",
+        "dataSources": {
+            "AdminReqServ": {
+                "uri": "/admin-req/",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui5": {
+        "dependencies": { "libs": { "sap.fe": {} } },
+        "models": {
+            "": {
+                "dataSource": "AdminReqServ",
+                "settings": { 
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect" : true,
+                    "earlyRequests": true,
+                    "groupProperties": {
+                        "default": {
+                            "submit": "Auto"
+                        }
+                    }
+                }
+                
+            }
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "RequirementsList",
+                    "target": "RequirementsList"
+                }
+            ],
+            "targets": {
+                "RequirementsList": {
+                    "type": "Component",
+                    "id": "RequirementsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings" : {
+                            "entitySet" : "Requirements",
+                            "variantManagement": "Page" 
+                      
+                             
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
