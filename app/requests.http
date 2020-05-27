@@ -1,0 +1,11 @@
+## Obtener requerimientos
+GET http://localhost:4004/admin-req/Requirements
+
+
+### Crear requerimientos
+POST http://localhost:4004/admin-req/Requirements
+Content-Type: application/json
+
+{ "ID":6,
+"reqID":"3330",
+ "title":"Maestro material"}
