@@ -1,6 +1,8 @@
 ## Obtener requerimientos
 GET http://localhost:4004/admin-req/Requirements
 
+## Obtener requerimiento concreto
+GET http://localhost:4004/admin-req/Requirements/2
 
 ### Crear requerimientos
 POST http://localhost:4004/admin-req/Requirements

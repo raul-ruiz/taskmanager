@@ -9,6 +9,7 @@ entity Requestors: managed{
     key ID: Integer;
     name: String;
     tasks: Association to many Tasks on tasks.requestor = $self;
+    requirements: Association to many Requirements on requirements.requestor = $self;
 }
 
 entity Developers: managed{
@@ -21,6 +22,9 @@ entity Requirements: managed {
     key ID: Integer;
     reqID: String;
     title: String(100);
+    release: String(5);
+    comments: String(200);
+    requestor: Association to Requestors;
     tasks: Association to many Tasks on tasks.requirement = $self;   
 }
 entity Tasks : managed {

@@ -36,6 +36,11 @@
                     "pattern": "",
                     "name": "RequirementsList",
                     "target": "RequirementsList"
+                },
+                {
+                    "pattern": "Requirements({key})",
+                    "name": "RequirementObjectPage",
+                    "target": "RequirementObjectPage"
                 }
             ],
             "targets": {
@@ -46,9 +51,25 @@
                     "options": {
                         "settings" : {
                             "entitySet" : "Requirements",
-                            "variantManagement": "Page" 
+                            "navigation": {
+                                "Requirements":{
+                                    "detail":{
+                                        "route":"RequirementsDetail"
+                                    }
+                                }
+                            } 
                       
                              
+                        }
+                    }
+                },
+                "RequirementObjectPage": {
+                    "type": "Component",
+                    "id": "RequirementObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings":{
+                            "entitySet": "Requirements"
                         }
                     }
                 }
