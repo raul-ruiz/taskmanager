@@ -19,10 +19,11 @@ entity Developers: managed{
 }
 
 entity Requirements: managed {
-    key ID: Integer;
+    KEY ID: Integer;
     reqID: String;
     title: String(100);
     release: String(5);
+   
     comments: String(200);
     requestor: Association to Requestors;
     tasks: Association to many Tasks on tasks.requirement = $self;   

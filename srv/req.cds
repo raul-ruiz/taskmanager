@@ -1,8 +1,7 @@
 using { sap.capire.taskmanager as my} from '../db/schema';
 service AdminReqService {
-    @odata.draft.enabled
-     
+    @odata.draft.enabled 
     entity Requirements as projection on my.Requirements;
-     entity Requestors as projection on my.Requestors;
+    entity Requestors @readonly as projection on my.Requestors;
 }
 

@@ -10,7 +10,7 @@ annotate AdminReqService.Requirements with @(
         HeaderInfo: {
             TypeName: '{i18n>Req}',
             TypeNamePlural: '{i18n>ReqPlural}',
-            Description: { Value: reqID }
+            Title: { Value: title } 
         },
         SelectionFields: [reqID, title],
         LineItem: [
@@ -25,8 +25,9 @@ annotate AdminReqService.Requirements with @(
     ],
     FieldGroup#ReqDetails:{
         Data:[
-            {$Type: 'UI.DataField', Value: release},
-            {$Type: 'UI.DataField', Value: requestor.name}
+           {$Type: 'UI.DataField', Value: reqID},
+           {$Type: 'UI.DataField', Value: release},
+           {$Type: 'UI.DataField', Value: requestor_ID}
         ]
     },
     FieldGroup#ReqComments:{
@@ -35,15 +36,43 @@ annotate AdminReqService.Requirements with @(
         ]
     }
  }  
-);
+){
 
+    requestor @ValueList.entity: 'Requestors';
+};
+
+annotate my.Requestors with @(
+    UI:{
+        Identification:[{Value:name}]
+    }
+) ;
+
+annotate my.Requirements with {
+    requestor @(
+        Common: {
+            Text: requestor.name,
+            FieldControl: #Mandatory
+        },
+        ValueList.entity:'Requestors'
+    )
+
+
+} ;
+
+
+annotate  my.Requestors with {
+    ID @title:'{i18n>ID}' @UI.HiddenFilter;
+    name @title:'{i18n>Requestor}';
+}
 
 annotate  my.Requirements with{
     ID @title:'{i18n>ID}' @UI.HiddenFilter;
     reqID @title:'{i18n>Req}';
     title @title:'{i18n>Description}';
     release @title:'{i18n>Rel}';
+     @UI.multiLineText: true
     comments @title:'{i18n>Comments}';
+    
     requestor @title: '{i18n>Requestor}';
 
 } ;
