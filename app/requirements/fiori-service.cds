@@ -38,7 +38,8 @@ annotate AdminReqService.Requirements with @(
  }  
 ){
 
-    requestor @ValueList.entity: 'Requestors';
+    requestor @ValueList.entity: 'Requestors' 
+    
 };
 
 annotate my.Requestors with @(
@@ -52,7 +53,7 @@ annotate my.Requestors with @(
 annotate my.Requirements with {
     requestor @(
         Common: {
-            Text: requestor.name,
+            Text: {$value: requestor.name, ![@UI.TextArrangement]: #TextOnly},
             FieldControl: #Mandatory
         },
         ValueList.entity:'Requestors'
