@@ -5,8 +5,8 @@ using { managed, cuid } from '@sap/cds/common';
 type Status: String enum{
     PorRecibir; Recibido;EnCurso;Parado; Entregado;Cancelado;
 }
-entity Requestors: managed{
-    key ID: Integer;
+entity Requestors: managed, cuid{
+    
     name: String;
     tasks: Association to many Tasks on tasks.requestor = $self;
     requirements: Association to many Requirements on requirements.requestor = $self;

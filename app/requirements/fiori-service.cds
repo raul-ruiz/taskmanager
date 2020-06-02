@@ -45,7 +45,9 @@ annotate my.Requestors with @(
     UI:{
         Identification:[{Value:name}]
     }
-) ;
+){
+    ID @UI.Hidden;
+} ;
 
 annotate my.Requirements with {
     requestor @(
@@ -61,6 +63,7 @@ annotate my.Requirements with {
 
 
 annotate  my.Requestors with {
+    
     ID @title:'{i18n>ID}' @UI.HiddenFilter;
     name @title:'{i18n>Requestor}';
 }
