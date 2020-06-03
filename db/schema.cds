@@ -12,14 +12,12 @@ entity Requestors: managed, cuid{
     requirements: Association to many Requirements on requirements.requestor = $self;
 }
 
-entity Developers: managed{
-    key ID: Integer;
+entity Developers: managed, cuid{
     name: String;
     tasks: Association to many Tasks on tasks.developer = $self;
 }
 
-entity Requirements: managed {
-    KEY ID: Integer;
+entity Requirements: managed,cuid {
     reqID: String;
     title: String(100);
     release: String(5);
@@ -28,14 +26,14 @@ entity Requirements: managed {
     requestor: Association to Requestors;
     tasks: Association to many Tasks on tasks.requirement = $self;   
 }
-entity Tasks : managed {
-    key ID: Integer;
+entity Tasks : managed,cuid {
+    ticket: String;
     title : String;
     requestor: Association to Requestors;
     developer: Association to Developers;
     receptionDate: Date;
     deliveryDate: Date;
-    status: Status;
+    status: String;
     requirement: Association to Requirements;
     journalEntries: Association to many JournalEntries on journalEntries.task = $self;
     comments: String; 

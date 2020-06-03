@@ -36,6 +36,11 @@
                     "pattern": "",
                     "name": "TasksList",
                     "target": "TasksList"
+                },
+                {
+                    "pattern": "Tasks({key})",
+                    "name": "TaskObjectPage",
+                    "target": "TaskObjectPage"
                 }
             ],
             "targets": {
@@ -46,11 +51,28 @@
                     "options": {
                         "settings" : {
                             "entitySet" : "Tasks",
-                            "variantManagement": "Page" 
+                            "variantManagement": "Page" ,
+                            "navigation":{
+                                "Tasks":{
+                                    "detail":{
+                                        "route":"TaskDetail"
+                                    }
+                                }
+                            }
 
                             
                       
                              
+                        }
+                    }
+                },
+                "TaskObjectPage":{
+                    "type": "Component",
+                    "id": "TaskObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options":{
+                        "settings":{
+                            "entitySet":"Tasks"
                         }
                     }
                 }
