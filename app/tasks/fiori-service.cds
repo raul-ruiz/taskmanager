@@ -2,7 +2,7 @@
    Annotations 
 */
 
-using { sap.capire.taskmanager as my } from '../../db/schema';
+using { sap.atc.taskmanager as my } from '../../db/schema';
 
 /// Task  list
 annotate AdminTaskService.Tasks with @(
@@ -12,11 +12,11 @@ annotate AdminTaskService.Tasks with @(
             TypeNamePlural: '{i18n>TaskPlural}',
             Description: { Value: title }
         },
-        SelectionFields: [status, title],
+        SelectionFields: [title],
         LineItem: [
             {Type: 'UI.DataField', Value: title, Label: '{i18n>Description}'},  
-            {Type: 'UI.DataField', Value: status, Label: '{i18n>Status}'} ,
-            {Type: 'UI.DataField', Value: developer.name, Label:'{i18n>Developer}'}           
+            {Type: 'UI.DataField', Value: developer.name, Label:'{i18n>Developer}'}   ,
+            {Type: 'UI.DataField', Value: status.name, Label:'{i18n>TaskStatus}'}          
         ] ,
         Facets:[
             {$Type: 'UI.ReferenceFacet', Target:'@UI.FieldGroup#TaskDetails', Label:'{i18n>TaskDetails}'}
@@ -25,11 +25,11 @@ annotate AdminTaskService.Tasks with @(
         Data:[
            {$Type: 'UI.DataField', Value: requirement_ID},
            {$Type: 'UI.DataField', Value: ticket},
+           {$Type: 'UI.DataField', Value: status_ID},
            {$Type: 'UI.DataField', Value: receptionDate},
            {$Type: 'UI.DataField', Value: deliveryDate},
            {$Type: 'UI.DataField', Value: requestor_ID},
-           {$Type: 'UI.DataField', Value: developer_ID},
-           {$Type: 'UI.DataField', Value: status}
+           {$Type: 'UI.DataField', Value: developer_ID}
         ]
         }
     
@@ -41,6 +41,8 @@ annotate AdminTaskService.Tasks with @(
     requestor @ValueList.entity: 'Requestors';
     developer @ValueList.entity: 'Developers' ;
     requirement @ValueList.entity: 'Requirements';
+    status @ValueList.entity: 'Statuses';
+     
 };
 
  
@@ -51,6 +53,14 @@ annotate my.Developers with @(
 ){
     ID @UI.Hidden;
 } ;
+annotate my.Statuses with @(
+    UI:{
+        Identification:[{Value:name}]
+    }
+){
+    ID @UI.Hidden;
+} ;
+
  
 annotate my.Requirements with @(
     UI:{
@@ -66,6 +76,9 @@ annotate  my.Developers with {
     name @title:'{i18n>Developer}';
 }
 
+annotate my.Statuses with{
+    name @title: 'Status';
+} ;
  
 
 annotate my.Tasks with{
@@ -100,6 +113,13 @@ annotate my.Tasks with {
             FieldControl: #Mandatory
         },
         ValueList.entity:'Requirements'
+    );
+    status @(
+        Common: {
+            Text: {$value: status.name, ![@UI.TextArrangement]: #TextOnly},
+            FieldControl: #Mandatory
+        },
+        ValueList.entity:'Statuses'
     );
 
 } ;

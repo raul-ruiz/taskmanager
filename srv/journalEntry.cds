@@ -1,4 +1,4 @@
-using { sap.capire.taskmanager as my} from '../db/schema';
+using { sap.atc.taskmanager as my} from '../db/schema';
 service JournalEntryService {
     entity Journal as projection on my.Journals;
     entity JournalEntry as projection on my.JournalEntries;
