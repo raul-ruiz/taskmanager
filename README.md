@@ -1,6 +1,7 @@
 # Getting Started
 
-Welcome to your new project.
+Welcome Task Manager project.
+This is a sample project for SAP Cloud Application Programming (CAP). Work is in process, so expect constant changes (and possible bugs, as it's being used for training purposes).
 
 It contains these folders and files, following our recommended project layout:
 
@@ -22,4 +23,4 @@ File / Folder | Purpose
 
 ## Learn more...
 
-Learn more at https://cap.cloud.sap/docs/get-started/
+ 
