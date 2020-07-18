@@ -69,7 +69,7 @@
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings":{
-                            "entitySet": "Requirements"
+                            "entitySet": "Requirements" 
                         }
                     }
                 }

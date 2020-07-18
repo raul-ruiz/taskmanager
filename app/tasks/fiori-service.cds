@@ -10,7 +10,7 @@ annotate AdminTaskService.Tasks with @(
         HeaderInfo: {
             TypeName: '{i18n>Task}',
             TypeNamePlural: '{i18n>TaskPlural}',
-            Description: { Value: title }
+            Title: { Value: title }
         },
         SelectionFields: [title],
         LineItem: [

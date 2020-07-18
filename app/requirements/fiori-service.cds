@@ -36,6 +36,11 @@ annotate AdminReqService.Requirements with @(UI : {
         Target : '@UI.FieldGroup#ReqDetails',
         Label  : '{i18n>Req.Details}'
     },
+    
+    {   $Type: 'UI.ReferenceFacet', 
+    Target: 'tasks/@UI.LineItem',
+        Label: '{i18n>TaskPlural}'       
+    },
     {
         $Type  : 'UI.ReferenceFacet',
         Target : '@UI.FieldGroup#ReqComments',
